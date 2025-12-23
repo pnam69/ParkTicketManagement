@@ -1,0 +1,391 @@
+﻿@{
+    ViewData["Title"] = "Vé Đang Gửi";
+}
+
+<div class="page-heading">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Danh Sách Vé Đang Gửi</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Trang Chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Vé Đang Gửi</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+<!-- Pricing Info Card -->
+<div class="card mb-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="text-white mb-0"><i class="bi bi-cash-coin me-2"></i>Bảng Giá Gửi Xe</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center p-3 border rounded">
+                    <i class="bi bi-bicycle text-success" style="font-size: 2.5rem;"></i>
+                    <h5 class="mt-3 mb-3">Xe Đạp</h5>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Vé Ngày:</span>
+                        <strong class="text-success">2.000đ</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Vé Tháng:</span>
+                        <strong class="text-primary">50.000đ</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center p-3 border rounded">
+                    <i class="bi bi-scooter text-warning" style="font-size: 2.5rem;"></i>
+                    <h5 class="mt-3 mb-3">Xe Máy</h5>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Vé Ngày:</span>
+                        <strong class="text-success">3.000đ</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Vé Tháng:</span>
+                        <strong class="text-primary">50.000đ</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center p-3 border rounded">
+                    <i class="bi bi-car-front-fill text-primary" style="font-size: 2.5rem;"></i>
+                    <h5 class="mt-3 mb-3">Ô Tô</h5>
+                    <div class="text-center">
+                        <h4 class="text-success mt-3">MIỄN PHÍ</h4>
+                        <small class="text-muted">Dành cho giảng viên</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Tìm theo biển số hoặc mã vé...">
+            </div>
+            <div class="col-md-2">
+                <select class="form-select">
+                    <option value="">Tất cả loại xe</option>
+                    <option value="bike">Xe đạp</option>
+                    <option value="motorcycle">Xe máy</option>
+                    <option value="car">Ô tô</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select">
+                    <option value="">Loại vé</option>
+                    <option value="daily">Vé ngày</option>
+                    <option value="monthly">Vé tháng</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select">
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="active">Đang gửi</option>
+                    <option value="expired">Hết hạn</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">
+                    <i class="bi bi-funnel me-2"></i>Lọc
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Statistics Cards -->
+    <div class="row">
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon blue mb-2">
+                                <i class="iconly-boldTicket"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Vé Đang Gửi</h6>
+                            <h6 class="font-extrabold mb-0">142</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon green mb-2">
+                                <i class="bi bi-calendar-day" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Vé Ngày</h6>
+                            <h6 class="font-extrabold mb-0">98</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon purple mb-2">
+                                <i class="bi bi-calendar-month" style="font-size: 2rem;"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Vé Tháng</h6>
+                            <h6 class="font-extrabold mb-0">44</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon red mb-2">
+                                <i class="iconly-boldDanger"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Hết Hạn</h6>
+                            <h6 class="font-extrabold mb-0">5</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tickets Table -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Tất Cả Vé Đang Gửi</h4>
+            <div>
+                <button class="btn btn-sm btn-outline-primary me-2">
+                    <i class="bi bi-arrow-clockwise"></i>
+                </button>
+                <button class="btn btn-sm btn-primary">
+                    <i class="bi bi-download me-2"></i>Xuất Excel
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-lg">
+                    <thead>
+                        <tr>
+                            <th>Mã Vé</th>
+                            <th>Biển Số</th>
+                            <th>Loại Xe</th>
+                            <th>Loại Vé</th>
+                            <th>Vị Trí</th>
+                            <th>Ngày Bắt Đầu</th>
+                            <th>Ngày Hết Hạn</th>
+                            <th>Giá</th>
+                            <th>Trạng Thái</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Daily Tickets -->
+                        <tr>
+                            <td class="font-bold">#VX-001</td>
+                            <td>29A-12345</td>
+                            <td><span class="badge bg-warning"><i class="bi bi-scooter me-1"></i>Xe máy</span></td>
+                            <td><span class="badge bg-success">Vé ngày</span></td>
+                            <td>A1</td>
+                            <td>16/12/2024 08:30</td>
+                            <td>16/12/2024 23:59</td>
+                            <td class="text-success font-bold">3.000đ</td>
+                            <td><span class="badge bg-success">Đang gửi</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary" title="Xem chi tiết">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Hủy vé">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">#VX-002</td>
+                            <td>30G-56789</td>
+                            <td><span class="badge bg-success"><i class="bi bi-bicycle me-1"></i>Xe đạp</span></td>
+                            <td><span class="badge bg-success">Vé ngày</span></td>
+                            <td>A5</td>
+                            <td>16/12/2024 09:00</td>
+                            <td>16/12/2024 23:59</td>
+                            <td class="text-success font-bold">2.000đ</td>
+                            <td><span class="badge bg-success">Đang gửi</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold">#VX-003</td>
+                            <td>51B-11111</td>
+                            <td><span class="badge bg-primary"><i class="bi bi-car-front me-1"></i>Ô tô</span></td>
+                            <td><span class="badge bg-info">Miễn phí</span></td>
+                            <td>B2</td>
+                            <td>16/12/2024 07:45</td>
+                            <td>-</td>
+                            <td class="text-success font-bold">0đ</td>
+                            <td><span class="badge bg-success">Đang gửi</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Monthly Tickets -->
+                        <tr class="table-info">
+                            <td class="font-bold">#VT-101</td>
+                            <td>29B-22222</td>
+                            <td><span class="badge bg-warning"><i class="bi bi-scooter me-1"></i>Xe máy</span></td>
+                            <td><span class="badge bg-primary">Vé tháng</span></td>
+                            <td>A3</td>
+                            <td>01/12/2024</td>
+                            <td>31/12/2024</td>
+                            <td class="text-primary font-bold">50.000đ</td>
+                            <td><span class="badge bg-success">Còn 15 ngày</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-info">
+                            <td class="font-bold">#VT-102</td>
+                            <td>30C-33333</td>
+                            <td><span class="badge bg-success"><i class="bi bi-bicycle me-1"></i>Xe đạp</span></td>
+                            <td><span class="badge bg-primary">Vé tháng</span></td>
+                            <td>A8</td>
+                            <td>01/12/2024</td>
+                            <td>31/12/2024</td>
+                            <td class="text-primary font-bold">50.000đ</td>
+                            <td><span class="badge bg-success">Còn 15 ngày</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-info">
+                            <td class="font-bold">#VT-103</td>
+                            <td>29D-44444</td>
+                            <td><span class="badge bg-warning"><i class="bi bi-scooter me-1"></i>Xe máy</span></td>
+                            <td><span class="badge bg-primary">Vé tháng</span></td>
+                            <td>A12</td>
+                            <td>05/12/2024</td>
+                            <td>04/01/2025</td>
+                            <td class="text-primary font-bold">50.000đ</td>
+                            <td><span class="badge bg-success">Còn 19 ngày</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Expired Ticket Example -->
+                        <tr class="table-danger">
+                            <td class="font-bold">#VT-098</td>
+                            <td>51A-99999</td>
+                            <td><span class="badge bg-success"><i class="bi bi-bicycle me-1"></i>Xe đạp</span></td>
+                            <td><span class="badge bg-primary">Vé tháng</span></td>
+                            <td>A15</td>
+                            <td>01/11/2024</td>
+                            <td>30/11/2024</td>
+                            <td class="text-danger font-bold">50.000đ</td>
+                            <td><span class="badge bg-danger">Hết hạn</span></td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Trước</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Sau</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/static/js/components/dark.js"></script>
+    <script>
+        // Auto-refresh ticket status
+        setInterval(function() {
+            // In production, this would fetch updated data from server
+            console.log('Đang làm mới trạng thái vé...');
+        }, 60000);
+    </script>
+}

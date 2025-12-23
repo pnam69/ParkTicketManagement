@@ -1,0 +1,210 @@
+﻿@{
+    ViewData["Title"] = "Xe Vào";
+}
+
+<div class="page-heading">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>??ng K? Xe V?o</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Trang Chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Xe Vào</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <!-- Entry Form -->
+        <div class="col-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thống Kê Xe Vào Bãi</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="vehiclePlate" class="form-label">Biển Số Xe <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-lg" id="vehiclePlate" placeholder="29A-12345" required>
+                                <small class="text-muted">VD: 29A-12345, 30G-56789</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="vehicleType" class="form-label">Loại Xe <span class="text-danger">*</span></label>
+                                <select class="form-select form-select-lg" id="vehicleType" required>
+                                    <option value="">Chọn loại xe</option>
+                                    <option value="motorcycle">Xe máy</option>
+                                    <option value="car">Ô tô</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="driverName" class="form-label">Tên Chủ Xe</label>
+                                <input type="text" class="form-control" id="driverName" placeholder="Nguyễn Văn A">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="driverPhone" class="form-label">Số Điện Thoại</label>
+                                <input type="tel" class="form-control" id="driverPhone" placeholder="0901234567">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="parkingSpot" class="form-label">Vị Trí Đỗ</label>
+                                <select class="form-select" id="parkingSpot">
+                                    <option value="">Tự động phân bổ</option>
+                                    <optgroup label="Khu A - Xe máy">
+                                        <option value="A1">A1</option>
+                                        <option value="A2">A2</option>
+                                        <option value="A3">A3</option>
+                                        <option value="A4">A4</option>
+                                        <option value="A5">A5</option>
+                                    </optgroup>
+                                    <optgroup label="Khu B - Ô tô">
+                                        <option value="B1">B1</option>
+                                        <option value="B2">B2</option>
+                                        <option value="B3">B3</option>
+                                        <option value="B4">B4</option>
+                                        <option value="B5">B5</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="vehicleColor" class="form-label">Màu Xe</label>
+                                <input type="text" class="form-control" id="vehicleColor" placeholder="Đen, Trắng, ??...">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="specialNotes" class="form-label">Ghi Chú</label>
+                            <textarea class="form-control" id="specialNotes" rows="2" placeholder="Ghi ch? đặc biệt (nếu có)"></textarea>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="reset" class="btn btn-light btn-lg me-md-2">
+                                <i class="bi bi-arrow-clockwise me-2"></i>Làm Lại
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-check-circle me-2"></i>In Vé
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="col-12 col-lg-4">
+            <!-- Current Status -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Tình Trạng Hiện Tại</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Chỗ Còn Trống</span>
+                        <h4 class="mb-0 text-success">58</h4>
+                    </div>
+                    <div class="progress mb-3" style="height: 25px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 29%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100">29%</div>
+                    </div>
+                    <small class="text-muted">142 / 200 chỗ đỗ xe</small>
+                </div>
+            </div>
+
+            <!-- Pricing Info -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Giá Gửi Xe</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Xe máy
+                            <span class="badge bg-warning rounded-pill">3.000đ/xe</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ô tô
+                            <span class="badge bg-primary rounded-pill">5.000đ/xe</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Xe máy (cả ngày)
+                            <span class="badge bg-warning rounded-pill">20.000đ</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Ô tô (cả ngày)
+                            <span class="badge bg-primary rounded-pill">40.000đ</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Recent Entries -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Xe Vào Gần Đây</h4>
+                </div>
+                <div class="card-content pb-4">
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-warning">
+                            <span class="text-white fw-bold">A1</span>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">29A-12345</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">2 phút trước</p>
+                        </div>
+                    </div>
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-primary">
+                            <span class="text-white fw-bold">B2</span>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">30G-56789</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">5 phút trước</p>
+                        </div>
+                    </div>
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-warning">
+                            <span class="text-white fw-bold">A3</span>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">29B-11111</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">8 phút trước</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/static/js/components/dark.js"></script>
+    <script>
+        // Auto-format license plate input
+        document.getElementById('vehiclePlate').addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase();
+            e.target.value = value;
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const plate = document.getElementById('vehiclePlate').value;
+            const type = document.getElementById('vehicleType').options[document.getElementById('vehicleType').selectedIndex].text;
+            const ticketId = 'VX-' + Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+            
+            // Simulate ticket generation
+            alert('? ?? in v? th?nh c?ng!\n\nM? v?: #' + ticketId + '\nBi?n s?: ' + plate + '\nLo?i xe: ' + type + '\nGi? v?o: ' + new Date().toLocaleTimeString('vi-VN'));
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+}

@@ -1,0 +1,265 @@
+﻿@{
+    ViewData["Title"] = "Xe Ra";
+}
+
+<div class="page-heading">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Xe Ra & Thanh Toán</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Trang Chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Xe Ra</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+    <div class="row">
+        <!-- Search & Calculate -->
+        <div class="col-12 col-lg-8">
+            <!-- Ticket Search -->
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="card-title text-white mb-0">Tìm Kiếm Vé Xe</h4>
+                </div>
+                <div class="card-body">
+                    <form id="searchForm">
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label for="searchInput" class="form-label">Nhập Mã Vé hoặc Biển Số Xe</label>
+                                <input type="text" class="form-control form-control-lg" id="searchInput" placeholder="VX-001 hoặc 29A-12345" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-block">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="bi bi-search me-2"></i>Tìm Kiếm
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Ticket Details (Hidden by default) -->
+            <div class="card d-none" id="ticketDetailsCard">
+                <div class="card-header">
+                    <h4 class="card-title">Chi Tiết Vé Xe</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Mã Vé</label>
+                                <h5 id="ticketId">#VX-001</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Biển Số Xe</label>
+                                <h5 id="licensePlate">29A-12345</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Loại Xe</label>
+                                <h5 id="vehicleType">Ô tô</h5>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Giờ Vào</label>
+                                <h5 id="entryTime">08:30</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Giờ Hiện Tại</label>
+                                <h5 id="currentTime">14:30</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Vị Trí Đỗ</label>
+                                <h5 id="parkingSpot">B1</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Payment Calculation -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-muted">Thời gian gửi:</span>
+                                <strong id="duration">6 giờ</strong>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-muted">Giá theo giờ:</span>
+                                <strong id="hourlyRate">5.000đ/giờ</strong>
+                            </div>
+                            <div class="mb-2 d-flex justify-content-between">
+                                <span class="text-muted">T?m t?nh:</span>
+                                <strong id="subtotal">30.000đ</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-success text-white">
+                                <div class="card-body text-center">
+                                    <h6 class="text-white mb-2">Tổng Tiền</h6>
+                                    <h1 class="display-4 text-white mb-0" id="totalAmount">30.000đ</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Payment Method -->
+                    <div class="mb-4">
+                        <label class="form-label">Phương Thức Thanh Toán</label>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" checked>
+                                    <label class="form-check-label" for="cash">
+                                        <i class="bi bi-cash me-1"></i> Tiền Mặt
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="transfer" value="transfer">
+                                    <label class="form-check-label" for="transfer">
+                                        <i class="bi bi-phone me-1"></i> Chuyển Khoản
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" class="btn btn-light btn-lg me-md-2" onclick="hideTicketDetails()">
+                            <i class="bi bi-x-circle me-2"></i>Hủy
+                        </button>
+                        <button type="button" class="btn btn-success btn-lg" onclick="processPayment()">
+                            <i class="bi bi-check-circle me-2"></i>Thanh Toán & Xe Ra
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="col-12 col-lg-4">
+            <!-- Quick Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Xe Ra Hôm Nay</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Tổng số xe ra</span>
+                        <h4 class="mb-0 text-primary">87</h4>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Doanh thu</span>
+                        <h4 class="mb-0 text-success">850.000đ</h4>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted">TB thời gian gửi</span>
+                        <h4 class="mb-0 text-info">2.5 giờ</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Exits -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Xe Ra Gần Đây</h4>
+                </div>
+                <div class="card-content pb-4">
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-success">
+                            <i class="bi bi-check-circle text-white"></i>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">29C-67890</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">15.000đ - 1 phút trước</p>
+                        </div>
+                    </div>
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-success">
+                            <i class="bi bi-check-circle text-white"></i>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">30D-11111</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">25.000đ - 3 phút trước</p>
+                        </div>
+                    </div>
+                    <div class="recent-message d-flex px-4 py-3">
+                        <div class="avatar avatar-lg bg-success">
+                            <i class="bi bi-check-circle text-white"></i>
+                        </div>
+                        <div class="name ms-3">
+                            <h6 class="mb-1">29A-22222</h6>
+                            <p class="text-muted mb-0" style="font-size: 0.85rem;">10.000đ - 5 phút trước</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Card -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="alert alert-info mb-0">
+                        <h6 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Hướng Dẫn</h6>
+                        <p class="mb-0" style="font-size: 0.9rem;">
+                            Tìm kiếm bằng mã vé hoặc biển số xe. Hệ thống sẽ tự động tính tiền gửi xe dựa trên thời gian.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/assets/static/js/components/dark.js"></script>
+    <script>
+        function hideTicketDetails() {
+            document.getElementById('ticketDetailsCard').classList.add('d-none');
+        }
+
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show ticket details card
+            document.getElementById('ticketDetailsCard').classList.remove('d-none');
+            
+            // Scroll to the card
+            document.getElementById('ticketDetailsCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        function processPayment() {
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            const methodText = paymentMethod.labels[0].textContent.trim();
+            const amount = document.getElementById('totalAmount').textContent;
+            const ticketId = document.getElementById('ticketId').textContent;
+            
+            if(confirm(`Xác nhận thanh toán ${amount} bằng ${methodText}?`)) {
+                alert(`? Thanh toán thành công!\n\nV? ${ticketId} Tự động.\nXe ra khỏi bãi.`);
+                
+                // Hide the details card
+                hideTicketDetails();
+                
+                // Reset search form
+                document.getElementById('searchForm').reset();
+            }
+        }
+
+        // Update current time every second
+        setInterval(function() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('vi-VN', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: false 
+            });
+        }, 1000);
+    </script>
+}

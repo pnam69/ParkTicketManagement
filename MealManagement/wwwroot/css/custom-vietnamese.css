@@ -1,0 +1,79 @@
+/* Custom CSS for Vietnamese Character Support */
+
+/* Universal font stack that supports Vietnamese */
+body,
+html,
+.sidebar-wrapper,
+.menu,
+.card,
+.table,
+.form-control,
+.form-select,
+.btn,
+h1, h2, h3, h4, h5, h6,
+p, span, div, label, input, select, textarea {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', 'Helvetica Neue', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure proper Vietnamese character rendering */
+* {
+    text-rendering: optimizeLegibility;
+}
+
+/* Fix any potential encoding issues in badges and buttons */
+.badge,
+.btn,
+.breadcrumb-item {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Ensure sidebar menu displays Vietnamese correctly */
+.sidebar-menu .menu li a span,
+.sidebar-title {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    font-weight: 500;
+}
+
+/* Fix Vietnamese in form labels and inputs */
+.form-label,
+.form-control,
+.form-select {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Fix Vietnamese in cards */
+.card-header h4,
+.card-title,
+.card-body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Fix Vietnamese in tables */
+.table th,
+.table td {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Fix breadcrumb Vietnamese display */
+.breadcrumb-item a,
+.breadcrumb-item {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Fix page heading */
+.page-heading h3 {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+    font-weight: 600;
+}
+
+/* Ensure alerts and notifications display Vietnamese */
+.alert {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
+
+/* Fix footer text */
+footer p {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif !important;
+}
